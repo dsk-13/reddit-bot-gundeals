@@ -145,5 +145,5 @@ def about_message():
     color.print_color(
         'blue',
         '\n--------------------------------------------------\n' +
-        '\t\twww.reddit.com/r/buildapcsales' + '\n' +
+        '\t\twww.reddit.com/r/gundeals' + '\n' +
         '--------------------------------------------------\n')
