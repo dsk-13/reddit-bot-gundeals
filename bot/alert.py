@@ -1,8 +1,9 @@
 """
 ==========================================
-Author:         Tyler Brockett
+Author of Fork:          Metroshica
+Original Author:         Tyler Brockett
 Description:    Reddit Alerts Bot
-Date:           12/14/2015
+Date:           08/11/2015
 ==========================================
 """
 
@@ -20,8 +21,8 @@ from private import accountinfo
 connection = None
 reddit = None
 
-subject = "buildapcsales bot - message from developer"
-signature = "\n\t \n\t \n-tylerbrockett"
+subject = "gundeals bot - message from developer"
+signature = "\n\t \n\t \n-Metroshica"
 
 select_users = []
 
@@ -107,9 +108,9 @@ def run_alerts():
 
 def compose_salutation():
     result = signature + "\n\t \n\t \n" + \
-             "[code](https://github.com/tylerbrockett/reddit-bot-buildapcsales)" + \
+             "[code](https://github.com/metroshica/reddit-bot-gundeals)" + \
              " | /u/" + accountinfo.developerusername + \
-             " | /r/buildapcsales\n"
+             " | /r/gundeals\n"
     return result
 
 
@@ -125,7 +126,7 @@ def open_database():
 def connect_to_reddit():
     global reddit
     # Connecting to Reddit
-    user_agent = 'tylerbrockett - developer'
+    user_agent = 'Metroshica - developer'
     reddit = praw.Reddit(user_agent=user_agent)
     # TODO - TAKE OUT DISABLE WARNING AND FIGURE OUT REPLACEMENT CODE
     reddit.login(accountinfo.developerusername, accountinfo.developerpassword, disable_warning=True)

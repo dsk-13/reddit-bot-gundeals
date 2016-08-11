@@ -1,8 +1,9 @@
 """
 ==========================================
-Author:         Tyler Brockett
-Description:    Reddit Bot - buildapcsales
-Date:           11/13/2015
+Author of Fork:          Metroshica
+Original Author:         Tyler Brockett
+Description:    Reddit Bot - gundeals
+Date:           08/11/2016
 ==========================================
 """
 
@@ -35,7 +36,7 @@ def run_bot():
             check_for_commands()
             if run:
                 read_inbox()
-                crawl_subreddit('buildapcsales')
+                crawl_subreddit('gundeals')
                 color.print_color('yellow', times.get_time_passed(start_time))
         except KeyboardInterrupt:
             color.print_color('red', 'Interrupted')
@@ -300,7 +301,7 @@ def handle_crash(stacktrace):
             sleep(15)
 
 
-__author__ = 'tyler'
+__author__ = 'Metroshica'
 if __name__ == "__main__":
     try:
         global start_time

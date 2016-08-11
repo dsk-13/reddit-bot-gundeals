@@ -15,9 +15,9 @@ def compose_greeting(username):
 
 def compose_salutation():
     result = SIGNATURE + "\n\t \n\t \n" + \
-             "[code](https://github.com/tylerbrockett/reddit-bot-buildapcsales)" + \
+             "[code](https://github.com/metroshica/reddit-bot-gundeals)" + \
              " | /u/" + accountinfo.developerusername + \
-             " | /r/buildapcsales\n"
+             " | /r/gundeals\n"
     return result
 
 
@@ -81,7 +81,7 @@ def compose_default_message(username, item, request):
              "**There was an error processing your request.** Please review your message and " + \
              "make sure it follows the guidelines I have set. Please private message me " + \
              "with the subject 'Information' to get detailed information on how I work, " + \
-             "or message /u/tylerbrockett if you want specialized help or have any " + \
+             "or message /u/Metroshica if you want specialized help or have any " + \
              "questions for me. Thank you for your patience! \n\t \n\t \n" + \
              "**Your request:** \t \n" + \
              "Subject:\t" + item + "\t \n" + \
