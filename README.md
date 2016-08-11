@@ -1,4 +1,4 @@
-# reddit-bot-buildapcsales
+# reddit-bot-gundeals
 
 This is just a side project for me. I had been introduced to the Python programming language in an Artificial Intelligence class, and loved the syntax so much that I decided to explore it some more. I happened upon someone writing about how Reddit bots were primarily done using Python and the PRAW (Python Reddit API Wrapper) library, and thought I'd give it a try.
 
