@@ -265,12 +265,12 @@ def connect_to_reddit():
 
 
 def sleep(seconds):
-    print 'Sleeping',
+    print('Sleeping'),
     for i in range(seconds):
         stdout.write(".")
         stdout.flush()
         time.sleep(1)
-    print ''
+    print('')
 
 
 def initialize():
