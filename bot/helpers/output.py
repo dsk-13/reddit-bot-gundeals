@@ -140,7 +140,7 @@ def about_message():
     color.print_color(
         'yellow',
         "================================================================\n" +
-        "\t\tSALES__BOT - A Sales Notifier Bot\n" +
+        "\t\tGunDealsBot - A Sales Notifier Bot\n" +
         "================================================================\n\n")
     color.print_color(
         'blue',

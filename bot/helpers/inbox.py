@@ -24,7 +24,7 @@ def compose_salutation():
 def compose_subscribe_message(username, item):
     result = compose_greeting(username) + \
              "Thanks for your subscription. " + \
-             "You will continue to receive updates to part sales that contain '" + item + "' " + \
+             "You will continue to receive updates to gun deals that contain '" + item + "' " + \
              "in its title. To unsubscribe, send me a message with the subject '" + item + "' " + \
              "and the message body 'Unsubscribe'." + \
              compose_salutation()
@@ -94,7 +94,7 @@ def compose_match_message(username, item, title, permalink, url):
     result = compose_greeting(username) + \
              "We have found a match for your subscription to '" + item + "'! " + \
              "Below you will find the details:\n\t \n\t \n" + \
-             "**Sale Title:**\t \n" + \
+             "**Deal Title:**\t \n" + \
              title + "\t \n\t \n" + \
              "**Links:**\t \n" + \
              "[Reddit URL](" + permalink + ")" + "     |     " + \
