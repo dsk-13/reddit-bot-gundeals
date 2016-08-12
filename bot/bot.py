@@ -23,7 +23,6 @@ bot = accountinfo.username
 
 connection = None
 reddit = None
-start_time = None
 
 run = True
 
