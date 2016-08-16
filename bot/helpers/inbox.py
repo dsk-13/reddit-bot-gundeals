@@ -10,7 +10,7 @@ def format_subject(s):
 
 
 def compose_greeting(username):
-    return "Hi " + username + ",\n\n"
+    return "Hello " + username + ",\n\n"
 
 
 def compose_salutation():
