@@ -119,7 +119,7 @@ INFORMATION = \
     "Send me a private message with the subject line as the exact string you " + \
     "want me to keep an eye out for, and the body as 'subscribe'. Keep it " + \
     "semi-general as to not limit my search too much. For example, use " + \
-    "'i5-4590' instead of 'Intel Core i5-4590 3.3GHz LGA 1150'. \n\n" + \
+    "'AR500' instead of 'AR500 Steel Targets'. \n\n" + \
     \
     "###What I do\n" + \
     "I will send you a message that contains a link to that item each time " + \
