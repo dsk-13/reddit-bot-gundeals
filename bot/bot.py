@@ -14,7 +14,7 @@ import sqlite3
 import traceback
 from sys import stdout
 
-from helpers import color, times, database, inbox, files, output
+from helpers import color, times, database, inbox, files, gmail, output
 from private import accountinfo
 
 SLEEP_SECONDS = 45
