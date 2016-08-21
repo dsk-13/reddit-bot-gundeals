@@ -1,8 +1,8 @@
 '''
 Module that will send emails from the redditgundeals@gmail.com account to users
-that have requested e-mail alerts. Currently this will only send e-mails, it doesn't
-allow for people to unsubscribe from alerts via e-mail. Need to figure out how to
-read the inbox to do that.
+that have requested e-mail alerts. Currently this will only send e-mails, it 
+doesn't allow for people to unsubscribe from alerts via e-mail. Need to figure
+out how to read the inbox to do that.
 '''
 
 from helpers import color, inbox

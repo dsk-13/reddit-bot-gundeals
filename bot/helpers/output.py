@@ -1,3 +1,7 @@
+'''
+Output messages for commands run by bot.py
+'''
+
 import traceback
 from helpers import color
 

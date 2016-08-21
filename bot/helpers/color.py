@@ -1,3 +1,7 @@
+'''
+Creates an easy way to colorize system output.
+'''
+
 from random import randint
 
 RESET = '\033[39m'
