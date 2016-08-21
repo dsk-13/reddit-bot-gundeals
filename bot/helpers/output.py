@@ -52,6 +52,8 @@ def feedback_exception(username, user_feedback):
 def match_exception(username, item, message_id, title, permalink, url):
     color.print_color('red', "match exception caught\n" +
                       "username:   " + username + "\n" +
+                      "email:   " + email + "\n" +
+                      "twitter:   " + twitter + "\n" +
                       "message id: " + message_id + "\n" +
                       "item:       " + item + "\n" +
                       "title:      " + title + "\n" +
@@ -123,11 +125,13 @@ def default(username, subject, body):
                       '-------------------------------\n\n')
 
 
-def match(username, item, message_id, title, permalink, url):
+def match(username, email, twitter, item, message_id, title, permalink, url):
     color.print_color('magenta',
                       "-------------------------------\n" +
                       "        SUBMISSION MATCH\n" +
                       "username:   " + username + "\n" +
+                      "email:   " + email + "\n" +
+                      "twitter:   " + twitter + "\n" +
                       "message id: " + message_id + "\n" +
                       "item:       " + item + "\n" +
                       "title:      " + title + "\n" +

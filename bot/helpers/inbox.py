@@ -110,7 +110,7 @@ def compose_feedback_forward(username, message):
     return result
 
 
-SIGNATURE = "\n\t \n\t \n-sales__bot"
+SIGNATURE = "\n\t \n\t \n-GunDealsBot"
 
 INFORMATION = \
     "Thanks for your interest in my abilities! This is how I work: \n\n" + \

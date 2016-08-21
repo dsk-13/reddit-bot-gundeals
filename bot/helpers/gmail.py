@@ -1,4 +1,11 @@
-from helpers import color
+'''
+Module that will send emails from the redditgundeals@gmail.com account to users
+that have requested e-mail alerts. Currently this will only send e-mails, it doesn't
+allow for people to unsubscribe from alerts via e-mail. Need to figure out how to
+read the inbox to do that.
+'''
+
+from helpers import color, inbox
 from private import accountinfo
 import smtplib
 
@@ -7,16 +14,21 @@ def __init__(self):
     self.temp = 0
 
 
-def send_email(self, destination, subject, message):
-    color.print_color('cyan', '\n\n' +
-                            '----------- MESSAGE SENT -----------\n' +
-                            'destination: ' + destination + '\n' +
-                            'subject:     ' + subject + '\n' +
-                            'message:     ' + message + '\n\n\n')
+def send_email(username, item, title, permalink, url):
     FROM = accountinfo.gmail_user
-    TO = destination
+    TO = email
     SUBJECT = subject
-    TEXT = message
+    TEXT = inbox.compose_greeting(username) + \
+    "We have found a match for your subscription to '" + item + "'! " + \
+    "Below you will find the details:\n\t \n\t \n" + \
+     "**Deal Title:**\t \n" + \
+     title + "\t \n\t \n" + \
+     "**Links:**\t \n" + \
+     "[Reddit URL](" + permalink + ")" + "     |     " + \
+     "[Sale URL](" + url + ")\n\n" + \
+     "To unsubscribe from these alerts, message /u/GunDealsBot with the subject " + \
+     item + "and with the message body 'Unsubscribe'.\n\n" + \
+     inbox.compose_salutation()
 
     email = """From: %s\nTo: %s\nSubject: %s\n\n%s
     """ % (FROM, ", ".join(TO), SUBJECT, TEXT)    
