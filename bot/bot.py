@@ -113,7 +113,7 @@ def handle_item_match(username, email, twitter, item, message_id, title, permali
                                     (username, item, permalink, times.get_current_timestamp()))
         message.reply(inbox.compose_match_message(username, item, title, permalink, url))
         if email != None:
-            send_email(email, username, item, permalink, url)
+            gmail.send_email(email, username, item, title, permalink, url)
         if twitter != None:
             print('This is where a Tweet will be sent')
         connection.commit()

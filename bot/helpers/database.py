@@ -14,6 +14,7 @@ MESSAGE_ID = 'message_id'
 ITEM = 'item'
 TIMESTAMP = 'timestamp'
 EMAIL = 'email'
+TWITTER = 'twitter'
 
 COL_SUB_USERNAME = 0
 COL_SUB_MESSAGE_ID = 1
@@ -29,6 +30,7 @@ CREATE_TABLE_SUBSCRIPTIONS = \
     MESSAGE_ID + " TEXT NOT NULL, " + \
     ITEM + " TEXT NOT NULL, " + \
     EMAIL + " TEXT, " + \
+    TWITTER + " TEXT, " + \
     TIMESTAMP + " REAL NOT NULL, " + \
     "PRIMARY KEY(" + USERNAME + ", " + ITEM + ")) " + \
     "WITHOUT ROWID;"
