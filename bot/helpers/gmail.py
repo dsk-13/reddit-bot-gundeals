@@ -36,7 +36,7 @@ def send_email(username, item, title, permalink, url):
         server = smtplib.SMTP("smtp.gmail.com", 587)
         server.ehlo()
         server.starttls()
-        server.login(gmail_user, gmail_pwd)
+        server.login(accountinfo.gmail_user, accountinfo.gmail_pwd)
         server.sendmail(FROM, TO, message)
         server.close()
         color.print_color('cyan', '\n\n' +
