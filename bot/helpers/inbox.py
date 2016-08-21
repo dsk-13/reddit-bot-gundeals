@@ -124,9 +124,9 @@ INFORMATION = \
     "want me to keep an eye out for, and the body as 'subscribe'. Keep it " + \
     "semi-general as to not limit my search too much. For example, use " + \
     "'AR500' instead of 'AR500 Steel Targets'. \nIf you would like to receive" + \
-    " e-mail alerts, include the line 'email: <email address>'. You will then" + \ 
+    " e-mail alerts, include the line 'email: <email address>'. You will then" + \
     "receive an e-mail as well as a Reddit message everytime GunDealsBot finds" + \
-     "a match. Currently you are unable to unsubscribe via e-mail. If you" + \ 
+     "a match. Currently you are unable to unsubscribe via e-mail. If you" + \
     "decide you don't want e-mail alerts anymore but still want Reddit messages," + \
      "you'll have to unsubscribe from the item and re-subscribe without the email line.\n\n" + \
     \
