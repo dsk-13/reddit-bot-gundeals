@@ -105,17 +105,15 @@ def crawl_subreddit(subreddit):
             check_for_subscription(submission)
 
 
-def handle_item_match(username, email, twitter, item, message_id, title, permalink, url):
+def handle_item_match(username, item, email, twitter,  message_id, title, permalink, url):
     global connection, reddit
     try:
         message = reddit.get_message(message_id)
         connection.cursor().execute(database.INSERT_ROW_MATCHES,
                                     (username, item, permalink, times.get_current_timestamp()))
         message.reply(inbox.compose_match_message(username, item, title, permalink, url))
-        if email != None:
+        if email is not None:
             gmail.send_email(email, username, item, title, permalink, url)
-        if twitter != None:
-            print('This is where a Tweet will be sent')
         connection.commit()
         output.match(username, email, twitter, item, message_id, title, permalink, url)
     except:
@@ -207,8 +205,8 @@ def read_inbox():
         elif 'subscribe' in body and len(inbox.format_subject(subject).replace(' ', '')) > 0:
             email = None
             twitter = None
-            if 'email:' in body:
-                email = body.split('email:')[1].replace('\n',' ').strip().split()[0]
+            if 'email:' in body or 'e-mail:' in body:
+                email = body.split('mail:')[1].replace('\n',' ').strip().split()[0]
             if 'twitter:' in body:
                 twitter = body.split('twitter:')[1].replace('\n',' ').strip().split()[0]
             subscription = (username, message_id, subject, email, twitter, times.get_current_timestamp())
@@ -269,7 +267,7 @@ def open_database():
 def connect_to_reddit():
     global reddit
     # Connecting to Reddit
-    user_agent = 'GunDealsBot - A Sales Notifier for /r/gundeals'
+    user_agent = 'GunDeals - A Sales Notifier for /r/gundeals'
     reddit = praw.Reddit(user_agent=user_agent)
     # TODO Use OAuth instead of this login method
     reddit.login(accountinfo.username, accountinfo.password, disable_warning=True)
