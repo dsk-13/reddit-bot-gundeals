@@ -34,7 +34,7 @@ If you send a message that doesn't follow the above guidelines, you will get an 
 
 **08/16/16 -** A ***HUGE*** shoutout to Tyler Brocket (/u/tylerbrockett) for providing most of this code. As of right now this is mostly just a fork of his code and I've changed the subreddit fron /r/buildapcsales to /r/gundeals. Hope to have some new features in the future.
 
-**08/28/16 - Added the ability to receive e-mail notifications, read the Subscribe section above for details. As of now it's not possible to unsubscribe via e-mail, still trying to figure that one out.
+**08/28/16 -** Added the ability to receive e-mail notifications, read the Subscribe section above for details. As of now it's not possible to unsubscribe via e-mail, still trying to figure that one out.
 
 ## Developer Info
 
