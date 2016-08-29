@@ -1,3 +1,7 @@
+'''
+Module for handling message sent to /u/GunDealsBot.
+'''
+
 from helpers import database
 from private import accountinfo
 
@@ -10,7 +14,7 @@ def format_subject(s):
 
 
 def compose_greeting(username):
-    return "Hi " + username + ",\n\n"
+    return "Hello " + username + ",\n\n"
 
 
 def compose_salutation():
@@ -110,7 +114,7 @@ def compose_feedback_forward(username, message):
     return result
 
 
-SIGNATURE = "\n\t \n\t \n-sales__bot"
+SIGNATURE = "\n\t \n\t \n-GunDealsBot"
 
 INFORMATION = \
     "Thanks for your interest in my abilities! This is how I work: \n\n" + \
@@ -119,7 +123,12 @@ INFORMATION = \
     "Send me a private message with the subject line as the exact string you " + \
     "want me to keep an eye out for, and the body as 'subscribe'. Keep it " + \
     "semi-general as to not limit my search too much. For example, use " + \
-    "'AR500' instead of 'AR500 Steel Targets'. \n\n" + \
+    "'AR500' instead of 'AR500 Steel Targets'. \nIf you would like to receive" + \
+    " e-mail alerts, include the line 'email: <email address>'. You will then" + \
+    "receive an e-mail as well as a Reddit message everytime GunDealsBot finds" + \
+     "a match. Currently you are unable to unsubscribe via e-mail. If you" + \
+    "decide you don't want e-mail alerts anymore but still want Reddit messages," + \
+     "you'll have to unsubscribe from the item and re-subscribe without the email line.\n\n" + \
     \
     "###What I do\n" + \
     "I will send you a message that contains a link to that item each time " + \

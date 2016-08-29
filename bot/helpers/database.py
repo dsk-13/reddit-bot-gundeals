@@ -1,4 +1,6 @@
-
+'''
+Variables used for SQLITE commands.
+'''
 # ======================================================================================================
 #           DATABASE SUBSCRIPTIONS TABLE
 # ======================================================================================================
@@ -11,11 +13,15 @@ USERNAME = 'username'
 MESSAGE_ID = 'message_id'
 ITEM = 'item'
 TIMESTAMP = 'timestamp'
+EMAIL = 'email'
+TWITTER = 'twitter'
 
 COL_SUB_USERNAME = 0
 COL_SUB_MESSAGE_ID = 1
 COL_SUB_ITEM = 2
-COL_SUB_TIMESTAMP = 3
+COL_SUB_EMAIL = 3
+COL_SUB_TWITTER = 4
+COL_SUB_TIMESTAMP = 5
 
 
 CREATE_TABLE_SUBSCRIPTIONS = \
@@ -23,13 +29,15 @@ CREATE_TABLE_SUBSCRIPTIONS = \
     USERNAME + " TEXT NOT NULL, " + \
     MESSAGE_ID + " TEXT NOT NULL, " + \
     ITEM + " TEXT NOT NULL, " + \
+    EMAIL + " TEXT, " + \
+    TWITTER + " TEXT, " + \
     TIMESTAMP + " REAL NOT NULL, " + \
     "PRIMARY KEY(" + USERNAME + ", " + ITEM + ")) " + \
     "WITHOUT ROWID;"
 
 INSERT_ROW_SUBMISSIONS = "INSERT INTO " + \
                          TABLE_SUBSCRIPTIONS + \
-                         " VALUES (?,?,?,?)"
+                         " VALUES (?,?,?,?,?,?)"
 
 REMOVE_ROW_SUBSCRIPTIONS = "DELETE FROM " + TABLE_SUBSCRIPTIONS + \
     " WHERE " + USERNAME + " = (?) " + \
@@ -53,7 +61,7 @@ TABLE_MATCHES = 'matches'
 COL_MATCHES_USERNAME = 0
 COL_MATCHES_ITEM = 1
 COL_MATCHES_LINK = 2
-COL_MATCHES_TIMESTAMP = 3
+COL_MATCHES_TIMESTAMP = 5
 
 LINK = 'link'
 

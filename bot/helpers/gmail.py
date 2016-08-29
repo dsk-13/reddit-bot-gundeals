@@ -1,121 +1,65 @@
-from helpers import color
+'''
+Module that will send emails from the redditgundeals@gmail.com account to users
+that have requested e-mail alerts. Currently this will only send e-mails, it 
+doesn't allow for people to unsubscribe from alerts via e-mail. Need to figure
+out how to read the inbox to do that.
+'''
+
+from helpers import color, inbox
+from private import accountinfo
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+import smtplib
 
 
 def __init__(self):
     self.temp = 0
 
 
-def send_email(self, destination, subject, message):
-    color.print_color('cyan', '\n\n' +
-                            '----------- MESSAGE SENT -----------\n' +
-                            'destination: ' + destination + '\n' +
-                            'subject:     ' + subject + '\n' +
-                            'message:     ' + message + '\n\n\n')
-
-"""Send an email message from the user's account.
-"""
-'''
-import base64
-from email.mime.audio import MIMEAudio
-from email.mime.base import MIMEBase
-from email.mime.image import MIMEImage
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
-import mimetypes
-import os
-
-from apiclient import errors
-
-def SendMessage(service, user_id, message):
-  """Send an email message.
-
-  Args:
-    service: Authorized Gmail API service instance.
-    user_id: User's email address. The special value "me"
-    can be used to indicate the authenticated user.
-    message: Message to be sent.
-
-  Returns:
-    Sent Message.
-  """
-  try:
-    message = (service.users().messages().send(userId=user_id, body=message)
-               .execute())
-    print 'Message Id: %s' % message['id']
-    return message
-  except errors.HttpError, error:
-    print 'An error occurred: %s' % error
+def send_email(email, username, item, title, permalink, url):
+    subject = 'GunDealsBot found a match for ' + item
+    sender = accountinfo.gmail_user
+    recipient = email
+    htmltext = inbox.compose_greeting(username) + \
+    "<br><br>We have found a match for your subscription to <b>'" + item + "'</b>! " + \
+    "Below you will find the details:" + \
+    "<br><br><b>Deal Title:</b>" + title + \
+    "<br><b>Links:</b>" + \
+    "<br><a href='" + permalink + "'>Reddit Link</a>" +  \
+    "<br><a href='" + url + "'>Sale Link</a>" + \
+    "<br><br>To unsubscribe from these alerts, message /u/GunDealsBot with the subject '" + \
+    item + "' and with the message body 'Unsubscribe'.<br>" + \
+    "--GunDealBot<br><br><code><a href='https://github.com/metroshica/reddit-bot-gundeals'>Source Code on Github<a>" + \
+    "<br><a href='http://reddit.com/u/metroshica'>/u/metroshica</a>" + \
+    "<br><a href='http://reddit.com/r/gundeals'>/r/gundeals</a>"
 
 
-def CreateMessage(sender, to, subject, message_text):
-  """Create a message for an email.
+    msg = MIMEMultipart('alternative')
+    msg['Subject'] = subject
+    msg['From'] = sender
+    msg['To'] = recipient
 
-  Args:
-    sender: Email address of the sender.
-    to: Email address of the receiver.
-    subject: The subject of the email message.
-    message_text: The text of the email message.
+    plaintext = "Hi there, this is just placeholder text."
 
-  Returns:
-    An object containing a base64 encoded email object.
-  """
-  message = MIMEText(message_text)
-  message['to'] = to
-  message['from'] = sender
-  message['subject'] = subject
-  return {'raw': base64.b64encode(message.as_string())}
+    part1 = MIMEText(plaintext, 'plain')
+    part2 = MIMEText(htmltext, 'html')
 
+    msg.attach(part1)
+    msg.attach(part2)
 
-def CreateMessageWithAttachment(sender, to, subject, message_text, file_dir,
-                                filename):
-  """Create a message for an email.
-
-  Args:
-    sender: Email address of the sender.
-    to: Email address of the receiver.
-    subject: The subject of the email message.
-    message_text: The text of the email message.
-    file_dir: The directory containing the file to be attached.
-    filename: The name of the file to be attached.
-
-  Returns:
-    An object containing a base64 encoded email object.
-  """
-  message = MIMEMultipart()
-  message['to'] = to
-  message['from'] = sender
-  message['subject'] = subject
-
-  msg = MIMEText(message_text)
-  message.attach(msg)
-
-  path = os.path.join(file_dir, filename)
-  content_type, encoding = mimetypes.guess_type(path)
-
-  if content_type is None or encoding is not None:
-    content_type = 'application/octet-stream'
-  main_type, sub_type = content_type.split('/', 1)
-  if main_type == 'text':
-    fp = open(path, 'rb')
-    msg = MIMEText(fp.read(), _subtype=sub_type)
-    fp.close()
-  elif main_type == 'image':
-    fp = open(path, 'rb')
-    msg = MIMEImage(fp.read(), _subtype=sub_type)
-    fp.close()
-  elif main_type == 'audio':
-    fp = open(path, 'rb')
-    msg = MIMEAudio(fp.read(), _subtype=sub_type)
-    fp.close()
-  else:
-    fp = open(path, 'rb')
-    msg = MIMEBase(main_type, sub_type)
-    msg.set_payload(fp.read())
-    fp.close()
-
-  msg.add_header('Content-Disposition', 'attachment', filename=filename)
-  message.attach(msg)
-
-  return {'raw': base64.b64encode(message.as_string())}
-
-'''
+    try:
+        server = smtplib.SMTP("smtp.gmail.com", 587)
+        server.ehlo()
+        server.starttls()
+        server.login(accountinfo.gmail_user, accountinfo.gmail_pwd)
+        server.sendmail(sender, recipient, msg.as_string())
+        server.close()
+        color.print_color('cyan', '\n\n' +
+                            '----------- EMAIL SENT -----------\n' +
+                            'destination: ' + email + '\n' +
+                            'subject:     ' + subject + '\n\n') 
+    except:
+        color.print_color('red', '\n\n' +
+                            '----------- EMAIL FAILED -----------\n' +
+                            'destination: ' + email + '\n' +
+                            'subject:     ' + subject + '\n\n') 

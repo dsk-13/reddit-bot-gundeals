@@ -29,41 +29,7 @@ select_users = []
 
 def compose_alert(username):
     # Insert alert message here!
-    result = inbox.compose_greeting(username) + \
-        "**I have a question for you all!** And an apology for some. So let's start with the apology. " + \
-        "One user requested that things like 'amazon' be subscribable (is that a word?) so I made " + \
-        "a quick change to the code so it would check the URL of the submissions, and bestbuy " + \
-        "happened to have a URL which contained the sku '11**6700**9'. You all " + \
-        "can probably guess where I'm going with that. Sorry to all of you that were subscribed to " + \
-        "that... \n\t \n\t \n" + \
-        "***Anyways***, now to my question for you all. A few of you have requested being able to " + \
-        "filter notifications by website. I currently see two options for that.\n\t \n\t \n" + \
-        "1. People can just subscribe to something like 'amazon' as they normally would, and I " + \
-        "put a check in the code to see if there is a match against a whitelist of sites, and if " + \
-        "so THEN check the url against it. The catch here is that the site would ***have*** to be " + \
-        "in the whitelist. \n" + \
-        "2. People subscribe to something like 'site: amazon'. You could continue to " + \
-        "subscribe to items for all sites the normal way, this would only matter for subscribing to " + \
-        "all items only for a specific site. This would pave the way for being able to subscribe to " + \
-        "something like 'site: amazon item: 6700' which is what a few of you have been requesting. " + \
-        "\n\t \n\t \n" + \
-        "I will be taking an unofficial vote by tallying responses. I may post in " + \
-        "/r/buildapcsalesmeta as well, we'll see. **Unfortunately**, if I make any changes it " + \
-        "probably won't happen until I'm out of school in a couple months. This is my last semester, " + \
-        "and things are getting pretty crazy! I hope you all understand. \n\t \n\t \n" + \
-        "Also, a random PSA I've been meaning to tell everyone. I used to have a length requirement " + \
-        "of 2 (or 3?) characters for subscriptions to prevent stupid stuff from happening. But... it " + \
-        "was pretty short-sighted. Now there is a length requirement of just 1 character, to prevent " + \
-        "empty subscriptions, because who knows what would happen. But, what's cool, ***and I'm an " + \
-        "idiot for not seeing it sooner***, is that you can subscribe to things like '**i3**', " + \
-        "'**i5**', and '**i7**' now! Sorry if you guys tried to subscribe to those in the past. " + \
-        "Also, I haven't tried it yet, but in theory if you wanted to be subscribed to ***ALL*** " + \
-        "posts (some have wanted this, but be warned, you **will** get a lot of PMs), if you " + \
-        "subscribe to '**[**' or '**]**' you can effectively achieve that because of the post flair " + \
-        "like **[**CPU**]**. But again, that's untested and I make no guarantees, since weird stuff " + \
-        "definitely happens. \n\t \n\t \n" + \
-        "Thanks again for using the bot!"
-
+    result = inbox.compose_greeting(username) 
     result += compose_salutation()
     return result
 

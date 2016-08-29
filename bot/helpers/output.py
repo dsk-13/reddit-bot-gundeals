@@ -1,6 +1,15 @@
+'''
+Output messages for commands run by bot.py
+'''
+
 import traceback
 from helpers import color
 
+#Litte function to help with trying to concatenante null values and strings.
+def xstr(s):
+    if s is None:
+        return 'None'
+    return str(s)
 
 def subscribe_exception(username, item):
     color.print_color('red', 'subscribe exception caught\n' +
@@ -52,6 +61,8 @@ def feedback_exception(username, user_feedback):
 def match_exception(username, item, message_id, title, permalink, url):
     color.print_color('red', "match exception caught\n" +
                       "username:   " + username + "\n" +
+                      #"email:   " + email + "\n" +
+                      #"twitter:   " + twitter + "\n" +
                       "message id: " + message_id + "\n" +
                       "item:       " + item + "\n" +
                       "title:      " + title + "\n" +
@@ -123,11 +134,13 @@ def default(username, subject, body):
                       '-------------------------------\n\n')
 
 
-def match(username, item, message_id, title, permalink, url):
+def match(username, email, twitter, item, message_id, title, permalink, url):
     color.print_color('magenta',
                       "-------------------------------\n" +
                       "        SUBMISSION MATCH\n" +
                       "username:   " + username + "\n" +
+                      "email:   " + xstr(email) + "\n" +
+                      "twitter:   " + xstr(twitter) + "\n" +
                       "message id: " + message_id + "\n" +
                       "item:       " + item + "\n" +
                       "title:      " + title + "\n" +
