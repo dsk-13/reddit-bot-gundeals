@@ -23,7 +23,7 @@ def send_email(email, username, item, title, permalink, url):
     htmltext = inbox.compose_greeting(username) + \
     "<br><br>We have found a match for your subscription to <b>'" + item + "'</b>! " + \
     "Below you will find the details:" + \
-    "<br><br><b>Deal Title:</b>" + title + \
+    "<br><br><b>Deal Title: </b>" + title + \
     "<br><b>Links:</b>" + \
     "<br><a href='" + permalink + "'>Reddit Link</a>" +  \
     "<br><a href='" + url + "'>Sale Link</a>" + \
