@@ -5,6 +5,8 @@ Module for handling message sent to /u/GunDealsBot.
 from helpers import database
 from private import accountinfo
 
+BETA = True
+
 
 def format_subject(s):
     temp = s.replace('re:', '')
@@ -21,7 +23,7 @@ def compose_salutation():
     result = SIGNATURE + "\n\t \n\t \n" + \
              "[code](https://github.com/metroshica/reddit-bot-gundeals)" + \
              " | /u/" + accountinfo.developerusername + \
-             " | /r/gundeals\n"
+             " | /r/gundeals\n\t"
     return result
 
 
@@ -31,7 +33,7 @@ def compose_subscribe_message(username, item):
              "You will continue to receive updates to gun deals that contain '" + item + "' " + \
              "in its title. To unsubscribe, send me a message with the subject '" + item + "' " + \
              "and the message body 'Unsubscribe'." + \
-             compose_salutation()
+             compose_salutation()  + insert_beta_disclaimer(BETA)
     return result
 
 
@@ -50,7 +52,7 @@ def format_subscriptions(subscriptions):
 def compose_information_message(username, subscriptions):
     result = compose_greeting(username) + \
              INFORMATION + "\n\n" + format_subscriptions(subscriptions) + \
-             compose_salutation()
+             compose_salutation()  + insert_beta_disclaimer(BETA)
     return result
 
 
@@ -58,14 +60,14 @@ def compose_unsubscribe_message(username, item):
     result = compose_greeting(username) + \
              "You have unsubscribed from the item '" + item + "'." + \
              " Thanks for letting me help you!" + \
-             compose_salutation()
+             compose_salutation()  + insert_beta_disclaimer(BETA)
     return result
 
 
 def compose_unsubscribe_all_message(username):
     result = compose_greeting(username) + \
-             "Sorry to see you go. Thanks for trying me though! I hope you'll be back soon!" + \
-             compose_salutation()
+             "You have successfully been unsubscribed from all notifications. Sorry to see you go. Thanks for trying me though! I hope you'll be back soon!" + \
+             compose_salutation()  + insert_beta_disclaimer(BETA)
     return result
 
 
@@ -76,7 +78,7 @@ def compose_feedback_message(username):
              "requests the community makes. If your message is urgent, please feel free to " + \
              "PM me at /u/" + accountinfo.developerusername + " or email me at the email address " + \
              "linked below. Thanks again!" + \
-             compose_salutation()
+             compose_salutation()  + insert_beta_disclaimer(BETA)
     return result
 
 
@@ -90,7 +92,7 @@ def compose_default_message(username, item, request):
              "**Your request:** \t \n" + \
              "Subject:\t" + item + "\t \n" + \
              "Body:\t\t" + request + \
-             compose_salutation()
+             compose_salutation()  + insert_beta_disclaimer(BETA)
     return result
 
 
@@ -103,7 +105,7 @@ def compose_match_message(username, item, title, permalink, url):
              "**Links:**\t \n" + \
              "[Reddit URL](" + permalink + ")" + "     |     " + \
              "[Sale URL](" + url + ")" + \
-             compose_salutation()
+             compose_salutation() + insert_beta_disclaimer(BETA)
     return result
 
 
@@ -112,9 +114,18 @@ def compose_feedback_forward(username, message):
              "You have received feedback from /u/" + username + ". The feedback is quoted below:\n\n'" + \
              message + "'" + compose_salutation()
     return result
+def insert_beta_disclaimer(beta):
+    if beta == True:
+        disclaimer = \
+            "\n&nbsp;\n\n**----- BETA DISCLAIMER-----**\n\n" + \
+            "Currently GunDealsBot is in a beta state. While everything should be working correctly, " + \
+            "please let me know if you're having difficulties. The best way to do this is to send " + \
+            "me a message to with the subject line 'Feedback' Thanks for your help with the beta testing!" 
+    else:
+        disclaimer = ""
+    return disclaimer
 
-
-SIGNATURE = "\n\t \n\t \n-GunDealsBot"
+SIGNATURE = "\n\n-GunDealsBot"
 
 INFORMATION = \
     "Thanks for your interest in my abilities! This is how I work: \n\n" + \
@@ -154,4 +165,4 @@ INFORMATION = \
     "I am always open to feedback, requests, or things of that nature. While I am " + \
     "very much still in the process of learning, I will try my best to take your " + \
     "feedback into consideration. Sending me feedback should use the subject line " + \
-    "'Feedback'."
+    "'Feedback'." + insert_beta_disclaimer(BETA)
