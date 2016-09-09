@@ -165,4 +165,4 @@ INFORMATION = \
     "I am always open to feedback, requests, or things of that nature. While I am " + \
     "very much still in the process of learning, I will try my best to take your " + \
     "feedback into consideration. Sending me feedback should use the subject line " + \
-    "'Feedback'." + insert_beta_disclaimer(BETA)
+    "'Feedback'."

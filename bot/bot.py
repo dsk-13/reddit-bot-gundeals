@@ -14,7 +14,7 @@ import sqlite3
 import traceback
 from sys import stdout
 
-from helpers import color, times, database, inbox, files, gmail, output
+from helpers import logger, color, times, database, inbox, files, gmail, output
 from private import accountinfo
 
 SLEEP_SECONDS = 45
@@ -28,6 +28,7 @@ run = True
 
 def run_bot():
     global start_time, run
+    logger.log('Started gundeals bot')
     output.about_message()
     while True:
         try:

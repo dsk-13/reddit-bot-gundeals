@@ -3,7 +3,7 @@ Output messages for commands run by bot.py
 '''
 
 import traceback
-from helpers import color
+from helpers import color, logger
 
 #Litte function to help with trying to concatenante null values and strings.
 def xstr(s):
@@ -17,6 +17,7 @@ def subscribe_exception(username, item):
                       "item:       " + item + "\n" +
                       "stacktrace: " + "\n" +
                       traceback.format_exc() + "\n\n")
+    logger.log('Subscribe exception caught')
 
 
 def unsubscribe_all_exception(username):
@@ -24,6 +25,7 @@ def unsubscribe_all_exception(username):
                       "username:   " + username + "\n" +
                       "stacktrace: " + "\n" +
                       traceback.format_exc() + "\n\n")
+    logger.log('Unsubscribe all exception caught')
 
 
 def unsubscribe_exception(username, item):
@@ -32,6 +34,7 @@ def unsubscribe_exception(username, item):
                       "item:       " + item + "\n" +
                       "stacktrace: " + "\n" +
                       traceback.format_exc() + "\n\n")
+    logger.log('Unsubscribe exception caught')
 
 
 def default_exception(username, subject, body):
@@ -41,6 +44,7 @@ def default_exception(username, subject, body):
                       "body:       " + body + "\n" +
                       "stacktrace: " + "\n" +
                       traceback.format_exc() + "\n\n")
+    logger.log('Unsubscribe exception caught')
 
 
 def information_exception(username):
@@ -48,6 +52,7 @@ def information_exception(username):
                       "username:   " + username + "\n" +
                       "stacktrace: " + "\n" +
                       traceback.format_exc() + "\n\n")
+    logger.log('Information exception caught')
 
 
 def feedback_exception(username, user_feedback):
@@ -56,6 +61,7 @@ def feedback_exception(username, user_feedback):
                       "feedback:   " + "\n" + user_feedback + "\n" +
                       "stacktrace: " + "\n" +
                       traceback.format_exc() + "\n\n")
+    logger.log('Feedback exception caught')
 
 
 def match_exception(username, item, message_id, title, permalink, url):
@@ -69,16 +75,19 @@ def match_exception(username, item, message_id, title, permalink, url):
                       "reddit url: " + permalink + "\n" +
                       "sale link:  " + url + "\n" +
                       "stacktrace:\n" + traceback.format_exc() + "\n\n")
+    logger.log('Match exception caught')
 
 
 def get_submissions_exception():
     color.print_color('red', "get submissions exception caught\n" +
                       "stacktrace:\n" + traceback.format_exc() + "\n\n")
+    logger.log('Get submissions exception caught')
 
 
 def read_inbox_exception():
     color.print_color('red', "read inbox exception caught\n" +
                       "stacktrace:\n" + traceback.format_exc() + "\n\n")
+    logger.log('Read inbox exception caught')
 
 
 def subscribe(username, item):
@@ -88,6 +97,7 @@ def subscribe(username, item):
                       'username: ' + username + "\n" +
                       'item:     ' + item + "\n" +
                       '-------------------------------\n\n')
+    logger.log(username + ' subscribed to ' + item)
 
 
 def unsubscribe_all(username):
@@ -96,6 +106,7 @@ def unsubscribe_all(username):
                       '         UNSUBSCRIBE ALL\n' +
                       'username: ' + username + "\n" +
                       '-------------------------------\n\n')
+    logger.log(username + ' unsubscribed from all notifications')
 
 
 def unsubscribe(username, item):
@@ -105,6 +116,7 @@ def unsubscribe(username, item):
                       'username: ' + username + "\n" +
                       'item:     ' + item + '\n' +
                       '-------------------------------\n\n')
+    logger.log(username + ' unsubscribed from ' + item)
 
 
 def information(username):
@@ -113,6 +125,7 @@ def information(username):
                       '         INFORMATION\n' +
                       'username: ' + username + "\n" +
                       '-------------------------------\n\n')
+    logger.log(username + ' asked for information')
 
 
 def feedback(username, user_feedback):
@@ -122,6 +135,7 @@ def feedback(username, user_feedback):
                       'username: ' + username + "\n" +
                       'feedback: ' + user_feedback + "\n" +
                       '-------------------------------\n\n')
+    logger.log(username + ' submitted feedback')
 
 
 def default(username, subject, body):
@@ -132,9 +146,13 @@ def default(username, subject, body):
                       "subject:  " + subject + "\n" +
                       "body:     " + body + "\n" +
                       '-------------------------------\n\n')
+    logger.log(username + ' submitted an incorrect command')
 
 
 def match(username, email, twitter, item, message_id, title, permalink, url):
+    emailmsg = ''
+    if email != None:
+        emailmsg = ' and email was sent to ' + email
     color.print_color('magenta',
                       "-------------------------------\n" +
                       "        SUBMISSION MATCH\n" +
@@ -147,6 +165,7 @@ def match(username, email, twitter, item, message_id, title, permalink, url):
                       "reddit url: " + permalink + "\n" +
                       "sale link:  " + url + "\n" +
                       '-------------------------------\n\n')
+    logger.log('Notified ' + username + ' of match for ' + item + emailmsg)
 
 
 def about_message():
