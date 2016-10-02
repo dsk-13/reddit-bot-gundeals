@@ -17,6 +17,7 @@ def __init__(self):
 
 
 def send_email(email, username, item, title, permalink, url):
+    title = title.decode('UTF-8').encode('ascii', 'replace')
     subject = 'GunDealsBot found a match for ' + item
     sender = accountinfo.gmail_user
     recipient = email
