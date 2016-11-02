@@ -5,7 +5,7 @@ Module for handling message sent to /u/GunDealsBot.
 from helpers import database
 from private import accountinfo
 
-BETA = True
+BETA = False
 
 
 def format_subject(s):
