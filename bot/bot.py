@@ -114,7 +114,10 @@ def handle_item_match(username, item, email, twitter,  message_id, title, permal
                                     (username, item, permalink, times.get_current_timestamp()))
         message.reply(inbox.compose_match_message(username, item, title, permalink, url))
         if email is not None:
-            gmail.send_email(email, username, item, title, permalink, url)
+            try:
+                gmail.send_email(email, username, item, title, permalink, url)
+            except:
+                logger.log('Caught encode error for ' + title)
         connection.commit()
         output.match(username, email, twitter, item, message_id, title, permalink, url)
     except:
