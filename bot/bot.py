@@ -272,7 +272,11 @@ def connect_to_reddit():
     global reddit
     # Connecting to Reddit
     user_agent = 'GunDeals - A Sales Notifier for /r/gundeals'
-    reddit = praw.Reddit(user_agent=user_agent)
+    reddit = praw.Reddit(client_id='7C7d2HZ20F_CcQ',
+                        client_secret='SpO4q5tVYHpSdU2FBP8HHSmSskg',
+                        password= accountinfo.password,
+                        username= accountinfo.username,
+                        user_agent=user_agent)
     # TODO Use OAuth instead of this login method
     reddit.login(accountinfo.username, accountinfo.password, disable_warning=True)
 
