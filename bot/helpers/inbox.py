@@ -143,7 +143,7 @@ INFORMATION = \
     \
     "###What I do\n" + \
     "I will send you a message that contains a link to that item each time " + \
-    "I come across a post in /r/buildapcsales that matches. It will be a reply " + \
+    "I come across a post in /r/gundeals that matches. It will be a reply " + \
     "to the original message you sent. This will happen until you send me a " + \
     "message unsubscribing from the part, which is described more in the next " + \
     "line. \n\n" + \

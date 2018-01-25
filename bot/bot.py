@@ -210,14 +210,20 @@ def read_inbox():
             email = None
             twitter = None
             if 'email:' in body or 'e-mail:' in body:
-                email = body.split('mail:')[1].replace('\n',' ').strip().split()[0]
+                try:
+                    email = body.split('mail:')[1].replace('\n',' ').strip().split()[0]
+                except:
+                    pass
             if 'twitter:' in body:
                 twitter = body.split('twitter:')[1].replace('\n',' ').strip().split()[0]
             subscription = (username, message_id, subject, email, twitter, times.get_current_timestamp())
             try:
                 cursor = connection.cursor()
-                cursor.execute(database.INSERT_ROW_SUBMISSIONS, subscription)
-                unread_message.reply(inbox.compose_subscribe_message(username, subject))
+                try:
+                    cursor.execute(database.INSERT_ROW_SUBMISSIONS, subscription)
+                    unread_message.reply(inbox.compose_subscribe_message(username, subject))
+                except:
+                    pass
                 unread_message.mark_as_read()
                 connection.commit()
                 output.subscribe(username, subject)
