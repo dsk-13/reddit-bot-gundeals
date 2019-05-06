@@ -1,4 +1,5 @@
 FROM python:3-alpine
+COPY requirements.txt /
+RUN pip install -r /requirements.txt
 COPY . /app
-RUN pip install -r /app/requirements.txt
 CMD python /app/bot/bot.py
