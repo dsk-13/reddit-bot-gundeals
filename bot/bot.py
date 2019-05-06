@@ -123,7 +123,7 @@ def handle_item_match(username, item, email, twitter,  message_id, title, permal
     except:
         connection.rollback()
         output.match_exception(username, item, message_id, title, permalink, url)
-        reddit.send_message(accountinfo.developerusername, "Bot Exception - Handle Item Match", traceback.format_exc())
+        #reddit.send_message(accountinfo.developerusername, "Bot Exception - Handle Item Match", traceback.format_exc())
     sleep(2)
 
 
