@@ -1,13 +1,16 @@
 '''
 Creates an easy way to colorize system output.
 '''
+from __future__ import print_function
 
 from random import randint
 
 RESET = '\033[39m'
 
-colors = [['black', '\033[30m'], ['red', '\033[31m'],     ['green', '\033[32m'], ['yellow', '\033[33m'],
-          ['blue', '\033[34m'],  ['magenta', '\033[35m'], ['cyan', '\033[36m'],  ['white', '\033[37m']]
+colors = [['black', '\033[30m'], ['red', '\033[31m'],
+          ['green', '\033[32m'], ['yellow', '\033[33m'],
+          ['blue', '\033[34m'],  ['magenta', '\033[35m'],
+          ['cyan', '\033[36m'],  ['white', '\033[37m']]
 
 
 def print_color(c, string):
@@ -24,6 +27,7 @@ def print_color(c, string):
             else:
                 col = match[0][1]
 
-        print col + string + RESET
+        print(col + string + RESET)
     except:
-        print str(string)
+        print(str(string))
+

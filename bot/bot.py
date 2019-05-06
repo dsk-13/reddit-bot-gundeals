@@ -6,6 +6,7 @@ Description:    Reddit Bot - gundeals
 Date:           08/11/2016
 ==========================================
 """
+from __future__ import print_function
 
 import os
 import time
@@ -288,7 +289,7 @@ def connect_to_reddit():
 
 
 def sleep(seconds):
-    print('Sleeping'),
+    print(('Sleeping'), end=' ')
     for i in range(seconds):
         stdout.write(".")
         stdout.flush()

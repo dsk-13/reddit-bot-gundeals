@@ -1,3 +1,4 @@
+from __future__ import print_function
 # import RPi.GPIO as gpio
 
 PIN = 0
@@ -17,7 +18,7 @@ class LedHelper:
         # gpio.setup(self.led_green[0], gpio.OUT)
         # gpio.setup(self.led_blue[0], gpio.OUT)
         # gpio.setup(self.led_red[0], gpio.OUT)
-        print 'initialized'
+        print('initialized')
 
     def get_green_state(self):
         return self.led_green[STATE]
@@ -49,7 +50,7 @@ class LedHelper:
     def turn_off(self):
         self.active = False
         for light in self.lights:
-            print 'Turned off ' + light[COLOR]
+            print('Turned off ' + light[COLOR])
             # gpio.output(light[PIN], False)
 
     def turn_on(self):
@@ -67,5 +68,5 @@ class LedHelper:
     def update(self, lights_to_update):
         if self.active or self.force_on:
             for light in lights_to_update:
-                print light[COLOR], 'state changed'
+                print(light[COLOR], 'state changed')
                 # gpio.output(light[PIN], light[STATE])
