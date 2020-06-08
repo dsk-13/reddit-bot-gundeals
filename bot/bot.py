@@ -113,7 +113,12 @@ def handle_item_match(username, item, email, twitter,  message_id, title, permal
         message = reddit.get_message(message_id)
         connection.cursor().execute(database.INSERT_ROW_MATCHES,
                                     (username, item, permalink, times.get_current_timestamp()))
-        message.reply(inbox.compose_match_message(username, item, title, permalink, url))
+        try:
+            message.reply(inbox.compose_match_message(username, item, title, permalink, url))
+        except:
+            cursor = connection.cursor()
+            cursor.execute(database.REMOVE_ROW_SUBSCRIPTIONS, (username, item))
+            cursor.execute(database.REMOVE_MATCHES_BY_USERNAME_AND_SUBJECT, (username, item))
         if email is not None:
             try:
                 gmail.send_email(email, username, item, title, permalink, url)
